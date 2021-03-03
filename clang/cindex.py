@@ -4150,6 +4150,7 @@ class Config(object):
         return lib
 
     def get_filename(self):
+        #return "libclang-10.so" #tmp
         if Config.library_file:
             return Config.library_file
 
