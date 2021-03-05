@@ -34,6 +34,33 @@ RUN apt-get install -y ros-melodic-pcl-ros ros-melodic-pcl-msgs
 
 RUN sudo apt-get install -y clang-8
 
+RUN apt-get update && \
+apt-get install -y cppad
+
+RUN apt-get install -y gcc g++ gfortran git patch wget pkg-config liblapack-dev libmetis-dev
+
+RUN git clone https://github.com/coin-or/Ipopt.git
+
+RUN apt-get install -y autoconf autotools-dev
+
+RUN cd Ipopt && \
+mkdir -p build && \
+cd build && \
+./../configure && \
+make && \
+make install
+
+RUN mkdir -p /usr/local/include/coin && cp -rf /usr/local/include/coin-or/* /usr/local/include/coin/
+
+RUN apt-get install -y ros-melodic-tf2-geometry-msgs
+
+RUN git clone https://github.com/coin-or-tools/ThirdParty-Mumps.git
+RUN cd ThirdParty-Mumps && \
+./get.Mumps && \
+./configure && \
+make && \
+make install
+
 #RUN git clone https://github.com/awslabs/ros2-migration-tools.git
 #RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 #RUN tar xvf clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
