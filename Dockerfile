@@ -61,6 +61,13 @@ RUN cd ThirdParty-Mumps && \
 make && \
 make install
 
+RUN apt-get install -y ros-melodic-grid-map-core ros-melodic-grid-map-ros ros-melodic-grid-map-msgs
+RUN apt-get install -y ros-melodic-pal-statistics
+RUN apt-get install -y ros-melodic-urg-node
+RUN apt-get install -y ros-melodic-grid-map-visualization
+RUN apt-get install -y ros-melodic-usb-cam
+RUN apt-get install -y nano
+
 #RUN git clone https://github.com/awslabs/ros2-migration-tools.git
 #RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
 #RUN tar xvf clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
